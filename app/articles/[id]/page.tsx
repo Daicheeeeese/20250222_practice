@@ -1,4 +1,4 @@
-import { articles } from '@/data/articles'
+import { articles, type Article } from '@/data/articles'
 import { HoverWord } from '@/components/HoverWord'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
