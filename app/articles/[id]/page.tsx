@@ -29,12 +29,6 @@ export default function ArticlePage({ params }: { params: Params }) {
         <HoverWord
           key={index}
           word={word}
-          data={{
-            example: {
-              en: "",  // 例文は空でOK（翻訳のみ表示）
-              ja: ""
-            }
-          }}
         />
       );
     });
