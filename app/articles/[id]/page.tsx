@@ -1,4 +1,5 @@
 import { articles } from '@/data/articles'
+import { HoverWord } from '@/components/HoverWord'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
@@ -11,6 +12,22 @@ export default function ArticlePage({ params }: { params: Params }) {
     notFound()
   }
 
+  // 単語を HoverWord コンポーネントでラップする関数
+  const renderContent = (content: string, words: Article['words']) => {
+    let result = content;
+    Object.keys(words).forEach((word) => {
+      const regex = new RegExp(`(${word})`, 'g');
+      result = result.replace(regex, `___${word}___`);
+    });
+
+    return result.split('___').map((part, index) => {
+      const wordData = article.words[part];
+      return wordData ? 
+        <HoverWord key={index} word={part} data={wordData} /> : 
+        part;
+    });
+  };
+
   return (
     <main className="p-8 max-w-4xl mx-auto">
       <Link 
@@ -22,7 +39,9 @@ export default function ArticlePage({ params }: { params: Params }) {
       <article className="prose lg:prose-xl">
         <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
         <div className="text-gray-600 mb-8">{article.date}</div>
-        <p className="whitespace-pre-wrap">{article.content}</p>
+        <p className="whitespace-pre-wrap">
+          {renderContent(article.content, article.words)}
+        </p>
       </article>
     </main>
   )
