@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <main className="container mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8">BBC News</h1>
-      <div className="space-y-6">
+      <div className="articles-grid">
         {articles.map((article) => (
           <Link 
             key={article.id} 
