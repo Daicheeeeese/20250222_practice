@@ -2,6 +2,7 @@ import { articles, type Article } from '@/data/articles'
 import { HoverWord } from '@/components/HoverWord'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
+import { DiscussionRequest } from '@/components/DiscussionRequest'
 
 type Params = { id: string }
 
@@ -29,7 +30,7 @@ export default function ArticlePage({ params }: { params: Params }) {
   };
 
   return (
-    <main className="p-8 max-w-4xl mx-auto">
+    <div className="container mx-auto px-4 py-8">
       <Link 
         href="/" 
         className="text-blue-600 hover:text-blue-800 mb-6 block"
@@ -43,6 +44,8 @@ export default function ArticlePage({ params }: { params: Params }) {
           {renderContent(article.content, article.words)}
         </p>
       </article>
-    </main>
+      
+      <DiscussionRequest />
+    </div>
   )
 } 
