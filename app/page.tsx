@@ -15,10 +15,15 @@ export default function Home() {
             <article>
               <div className="article-card-header">
                 <div className="title-section">
-                  <span className={`category-badge ${article.category.toLowerCase()}`}>
-                    {article.category}
-                  </span>
-                  <h2 className="text-xl font-semibold mt-2">{article.title}</h2>
+                  <div className="badge-container">
+                    <span className={`category-badge ${article.category.toLowerCase()}`}>
+                      {article.category}
+                    </span>
+                    <span className={`level-badge ${article.level.toLowerCase()}`}>
+                      {article.level}
+                    </span>
+                  </div>
+                  <h2 className="text-xl font-semibold">{article.title}</h2>
                 </div>
               </div>
               <p className="text-gray-600 text-sm mb-4">{article.date}</p>
