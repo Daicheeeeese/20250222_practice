@@ -1,4 +1,4 @@
-import { articles, type Article } from '@/data/articles'
+import { articles } from '@/data/articles'
 import { HoverWord } from '@/components/HoverWord'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
@@ -13,19 +13,32 @@ export default function ArticlePage({ params }: { params: Params }) {
     notFound()
   }
 
-  // 単語を HoverWord コンポーネントでラップする関数
-  const renderContent = (content: string, words: Article['words']) => {
+  // 記事の本文から単語を検出して HoverWord コンポーネントでラップする
+  const renderContent = (content: string) => {
     let result = content;
-    Object.keys(words).forEach((word) => {
-      const regex = new RegExp(`(${word})`, 'g');
-      result = result.replace(regex, `___${word}___`);
+    
+    // 記事内の単語を HoverWord コンポーネントに置き換える
+    Object.entries(article.words).forEach(([word, data]) => {
+      const regex = new RegExp(`\\b${word}\\b`, 'gi');
+      result = result.replace(regex, `<hover-word>${word}</hover-word>`);
     });
 
-    return result.split('___').map((part, index) => {
-      const wordData = article.words[part];
-      return wordData ? 
-        <HoverWord key={index} word={part} data={wordData} /> : 
-        part;
+    // HTML文字列を配列に分割
+    const parts = result.split(/(<hover-word>.*?<\/hover-word>)/);
+
+    // 配列を React 要素に変換
+    return parts.map((part, index) => {
+      if (part.startsWith('<hover-word>')) {
+        const word = part.replace(/<\/?hover-word>/g, '');
+        return (
+          <HoverWord
+            key={index}
+            word={word}
+            data={article.words[word.toLowerCase()]}
+          />
+        );
+      }
+      return <span key={index}>{part}</span>;
     });
   };
 
@@ -40,10 +53,22 @@ export default function ArticlePage({ params }: { params: Params }) {
         </Link>
         <article className="prose lg:prose-xl">
           <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
+          <div className="flex gap-2 mb-6">
+            <span className={`category-badge ${article.category.toLowerCase()}`}>
+              {article.category}
+            </span>
+            <span className={`level-badge ${article.level.toLowerCase()}`}>
+              {article.level}
+            </span>
+          </div>
           <div className="text-gray-600 mb-8">{article.date}</div>
-          <p className="whitespace-pre-wrap">
-            {renderContent(article.content, article.words)}
-          </p>
+          <div className="prose max-w-none">
+            {article.content.split('\n\n').map((paragraph, index) => (
+              <p key={index} className="mb-4">
+                {renderContent(paragraph)}
+              </p>
+            ))}
+          </div>
         </article>
         
         <DiscussionRequest />
