@@ -22,18 +22,38 @@ body {
 
 /* Tippyのカスタムテーマ */
 .tippy-box[data-theme~='custom'] {
-  background-color: white;
+  background-color: #f8fafc;  /* slate-50 */
   color: black;
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;  /* slate-200 */
 }
 
 .tippy-box[data-theme~='custom'] .tippy-arrow {
-  color: white;
+  color: #f8fafc;  /* slate-50 */
 }
 
-.tippy-box[data-theme~='custom'] .tippy-content {
-  padding: 0.5rem 0.75rem;
+.tippy-box[data-theme~='custom'] .tippy-arrow:before {
+  border-bottom-color: #e2e8f0;  /* slate-200 */
+}
+
+.tippy-box[data-theme~='custom'] .meaning-box {
+  font-weight: bold;
+}
+
+/* ホバーワードのスタイル */
+.hover-word {
+  border-bottom: 1px dotted #94a3b8;  /* slate-400 */
+  cursor: help;
+  transition: all 0.2s ease;
+}
+
+.hover-word:hover {
+  background-color: #dbeafe;  /* blue-100 */
+  border-bottom-color: #3b82f6;  /* blue-500 */
+  border-radius: 0.25rem;
+  padding: 0.125rem 0.25rem;
+  margin: -0.125rem -0.25rem;
 }
 
 /* 言語選択ボタンのスタイル */

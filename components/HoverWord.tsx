@@ -86,7 +86,9 @@ export function HoverWord({ word, data }: Props) {
   const content = (
     <div className="p-3">
       <div className="flex items-center gap-3 mb-3">
-        <span className="font-bold text-base">{data.meaning}</span>
+        <span className="meaning-box">
+          {data.meaning}
+        </span>
         <div className="flex items-center gap-2">
           <VoiceSelector />
           <button
@@ -144,7 +146,7 @@ export function HoverWord({ word, data }: Props) {
       interactive={true}
       maxWidth={400}
     >
-      <span className="border-b border-dotted border-gray-400 cursor-help">
+      <span className="hover-word">
         {word}
       </span>
     </Tippy>
