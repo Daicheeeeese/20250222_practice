@@ -1,3 +1,8 @@
+'use client'
+
+import { useState } from 'react'
+import { SpeakerWaveIcon } from '@heroicons/react/20/solid'
+
 type ReservationStatus = 'pending' | 'confirmed' | 'done' | 'cancelled';
 
 type Reservation = {
@@ -13,28 +18,28 @@ const mockReservations: Reservation[] = [
     id: '1',
     articleTitle: 'Climate change: How can we reduce our carbon footprint?',
     scheduledDate: '2024-03-01 14:00',
-    partnerName: 'Taro Tanaka',
+    partnerName: 'Emily Thompson',
     status: 'pending'
   },
   {
     id: '2',
     articleTitle: 'The future of artificial intelligence in healthcare',
     scheduledDate: '2024-03-02 15:00',
-    partnerName: 'Emma Kim',
+    partnerName: 'Michael Chen',
     status: 'confirmed'
   },
   {
     id: '3',
     articleTitle: 'Space exploration: The next frontier',
     scheduledDate: '2024-02-28 13:00',
-    partnerName: 'Sakura Suzuki',
+    partnerName: 'Sarah Johnson',
     status: 'done'
   },
   {
     id: '4',
     articleTitle: 'The impact of social media on mental health',
     scheduledDate: '2024-02-29 16:00',
-    partnerName: 'Li Xuan',
+    partnerName: 'David Wilson',
     status: 'cancelled'
   }
 ];
@@ -70,6 +75,14 @@ const getStatusText = (status: ReservationStatus) => {
 };
 
 export default function ReservationsPage() {
+  const [isPlaying, setIsPlaying] = useState<string | null>(null);
+
+  const handlePlayAudio = (reservationId: string) => {
+    // 将来的に実際の音声再生機能を実装
+    setIsPlaying(reservationId);
+    setTimeout(() => setIsPlaying(null), 2000); // 仮の再生完了タイミング
+  };
+
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-2xl font-bold mb-6">予約一覧</h1>
@@ -91,8 +104,23 @@ export default function ReservationsPage() {
               <div>
                 予定日時: {reservation.scheduledDate}
               </div>
-              <div>
-                パートナー: {reservation.partnerName}
+              <div className="flex items-center justify-between">
+                <div>
+                  パートナー: {reservation.partnerName}
+                </div>
+                {reservation.status === 'done' && (
+                  <button
+                    onClick={() => handlePlayAudio(reservation.id)}
+                    className={`flex items-center gap-1 px-3 py-1.5 rounded-full transition-colors ${
+                      isPlaying === reservation.id
+                        ? 'bg-blue-100 text-blue-600'
+                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                    }`}
+                  >
+                    <SpeakerWaveIcon className="w-5 h-5" />
+                    <span>録音を再生</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>
