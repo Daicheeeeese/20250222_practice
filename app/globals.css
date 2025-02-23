@@ -20,7 +20,22 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* ヘッダーのスタイル */
+/* 記事カードのスタイル */
+.article-card {
+  display: block;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e5e7eb;
+  transition: all 0.2s ease-in-out;
+}
+
+.article-card:hover {
+  background-color: #eff6ff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+/* サイトヘッダーのスタイル */
 .site-header {
   background-color: #2563eb;  /* blue-600 */
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);

@@ -1,21 +1,25 @@
-import { articles } from '@/data/articles'
 import Link from 'next/link'
+import { articles } from '@/data/articles'
 
 export default function Home() {
   return (
-    <main className="p-8">
-      <h1 className="text-2xl font-bold mb-6">Articles</h1>
-      <div className="space-y-4">
-        {articles.map(article => (
-          <div key={article.id} className="border p-4 rounded hover:bg-gray-50">
-            <Link href={`/articles/${article.id}`}>
-              <h2 className="text-xl font-semibold text-blue-600 hover:text-blue-800">
-                {article.title}
-              </h2>
-            </Link>
-            <p className="mt-2 text-gray-600">{article.content.substring(0, 100)}...</p>
-            <div className="mt-2 text-sm text-gray-500">{article.date}</div>
-          </div>
+    <main className="container mx-auto px-4 py-8">
+      <h1 className="text-3xl font-bold mb-8">BBC News</h1>
+      <div className="space-y-6">
+        {articles.map((article) => (
+          <Link 
+            key={article.id} 
+            href={`/articles/${article.id}`}
+            className="article-card"
+          >
+            <article>
+              <h2 className="text-xl font-semibold mb-2">{article.title}</h2>
+              <p className="text-gray-600 text-sm mb-4">{article.date}</p>
+              <p className="text-gray-700 line-clamp-3">
+                {article.content.split('\n')[0]}
+              </p>
+            </article>
+          </Link>
         ))}
       </div>
     </main>
