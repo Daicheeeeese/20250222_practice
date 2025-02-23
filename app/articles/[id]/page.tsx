@@ -2,14 +2,13 @@ import { articles } from '@/data/articles'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-type Props = {
+interface PageProps {
   params: {
     id: string
   }
-  searchParams: { [key: string]: string | string[] | undefined }
 }
 
-export default function ArticlePage({ params }: Props) {
+const ArticlePage = async ({ params }: PageProps) => {
   const article = articles.find(a => a.id === parseInt(params.id))
 
   if (!article) {
@@ -31,4 +30,6 @@ export default function ArticlePage({ params }: Props) {
       </article>
     </main>
   )
-} 
+}
+
+export default ArticlePage 
