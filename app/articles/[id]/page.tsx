@@ -2,13 +2,12 @@ import { articles } from '@/data/articles'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-interface PageProps {
-  params: {
-    id: string
-  }
-}
-
-const ArticlePage = async ({ params }: PageProps) => {
+// 型定義を削除し、直接パラメータを定義
+export default async function ArticlePage({
+  params,
+}: {
+  params: { id: string }
+}) {
   const article = articles.find(a => a.id === parseInt(params.id))
 
   if (!article) {
@@ -30,6 +29,4 @@ const ArticlePage = async ({ params }: PageProps) => {
       </article>
     </main>
   )
-}
-
-export default ArticlePage 
+} 
