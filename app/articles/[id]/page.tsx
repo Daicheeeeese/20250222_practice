@@ -2,12 +2,9 @@ import { articles } from '@/data/articles'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 
-// 型定義を削除し、直接パラメータを定義
-export default async function ArticlePage({
-  params,
-}: {
-  params: { id: string }
-}) {
+type Params = { id: string }
+
+export default function ArticlePage({ params }: { params: Params }) {
   const article = articles.find(a => a.id === parseInt(params.id))
 
   if (!article) {
