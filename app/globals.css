@@ -5,6 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --page-width: min(1280px, 100% - 4rem);  /* ページの最大幅を設定 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -14,10 +15,30 @@
   }
 }
 
+@media (min-width: 768px) {
+  :root {
+    --site-margin: 4rem;    /* タブレットでのマージン */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --site-margin: 8rem;    /* デスクトップでのマージン */
+  }
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* コンテナのスタイル */
+.container {
+  width: var(--page-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 0;
 }
 
 /* 記事グリッドのスタイル */
@@ -55,6 +76,11 @@ body {
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
 }
 
+.site-header .container {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
 .site-header .site-title {
   font-size: 1.875rem;  /* text-3xl */
   font-weight: bold;
@@ -74,6 +100,14 @@ body {
 
 .site-header .nav-link:hover {
   color: white;
+}
+
+/* 見出しのスタイル */
+.page-title {
+  font-size: 1.875rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  color: var(--foreground);
 }
 
 /* Tippyのカスタムテーマ */

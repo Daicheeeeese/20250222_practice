@@ -3,7 +3,7 @@ import { articles } from '@/data/articles'
 
 export default function Home() {
   return (
-    <main className="container mx-auto px-4 py-8">
+    <main className="container mx-auto px-8 md:px-16 lg:px-32 py-8">
       <h1 className="text-3xl font-bold mb-8">BBC News</h1>
       <div className="articles-grid">
         {articles.map((article) => (
