@@ -17,78 +17,90 @@ export type Article = {
 export const articles: Article[] = [
   {
     id: 1,
-    title: "How much protein do you really need to get strong?",
-    date: "2024-02-28",
-    content: `From raw eggs to protein shakes, those hoping to expand their brawn are often encouraged to ingest vast quantities of protein. But how much is really necessary and what's the best way to consume it?
+    title: "Elon Musk sues OpenAI and Sam Altman over 'betrayal' of AI mission",
+    date: "2024-03-01",
+    content: `Elon Musk is suing artificial intelligence company OpenAI and its chief executive Sam Altman, alleging they abandoned the company's original mission to benefit humanity in favour of profits.
 
-Sophia Moulson, 21, a fitness influencer based in West Sussex, began taking fitness seriously at the age of 19, after struggling with being overweight.
+The lawsuit claims OpenAI's close relationship with Microsoft has pushed it away from developing AI systems for the benefit of the public.
 
-"I often turned to food as a source of comfort, which ultimately left me in a cycle of negative self-image and low confidence. One day, I realised that I needed to take control – not just for my physical health but for my mental wellbeing too," says Moulson.
+Mr Musk helped found OpenAI in 2015 but stepped down from its board in 2018.
 
-Initially, she joined the gym with the sole intention of losing weight. But over time, she fell in love with the process of building up a healthy amount of muscle too. "I discovered how empowering it felt to grow stronger, and each small strength milestone motivated me to keep pushing forward," she says.
+OpenAI said it would "defend the integrity" of its mission and work.
 
-An integral part of Moulson's progress was research on nutrition. That's when she learned about the importance of protein for building muscle. However, as a vegetarian, Moulson initially felt that she was struggling to get enough protein through just her diet, so she turned to protein powders. "While it was possible for me to meet my needs through a well-balanced diet, it often required time and careful planning. Protein powders offered a convenient solution, especially with my busy lifestyle," she says.`,
+Mr Musk is seeking damages and wants OpenAI to return to its non-profit roots.
+
+The Tesla and SpaceX boss was one of several tech entrepreneurs who helped establish OpenAI as a non-profit organisation.
+
+The company said its mission was to "ensure that artificial general intelligence benefits all of humanity".
+
+But in 2019, OpenAI established a "capped-profit" company to help attract money from investors.
+
+In the lawsuit, filed in San Francisco, Mr Musk alleges this shift meant OpenAI had "abandoned its mission to benefit humanity" and instead focused on maximising profits.`,
     words: {
-      "brawn": {
-        meaning: "筋肉、体力",
+      "sue": {
+        meaning: "訴える、提訴する",
         example: {
-          en: "He has the brawn but not the brains.",
-          ja: "彼は頭脳より筋肉がある。"
+          en: "The company was sued for breach of contract.",
+          ja: "その会社は契約違反で訴えられました。"
         }
       },
-      "ingest": {
-        meaning: "摂取する、飲み込む",
+      "allegation": {
+        meaning: "申し立て、主張",
         example: {
-          en: "It's important to ingest enough vitamins.",
-          ja: "十分なビタミンを摂取することが重要です。"
+          en: "He denied all allegations of misconduct.",
+          ja: "彼は不正行為の申し立てをすべて否定しました。"
         }
       },
-      "influencer": {
-        meaning: "影響力のある人、インフルエンサー",
+      "integrity": {
+        meaning: "誠実さ、完全性",
         example: {
-          en: "Social media influencers can shape public opinion.",
-          ja: "ソーシャルメディアのインフルエンサーは世論を形成することができます。"
+          en: "The company maintains its integrity in all business dealings.",
+          ja: "その会社はすべての取引において誠実さを保っています。"
         }
       }
     }
   },
   {
     id: 2,
-    title: "Cryptocurrency theft of £1.1bn could be biggest ever",
-    date: "2024-02-29",
-    content: `Cryptocurrency firm Bybit said hackers stole $1.5bn (£1.1bn) worth of digital currency in what could be the biggest crypto theft in history.
+    title: "Apple fined £1.6bn for not telling users about cheaper music streaming options",
+    date: "2024-03-01",
+    content: `Apple has been fined £1.6bn ($2bn) by EU regulators for preventing music streaming services from informing users about cheaper subscription options outside its App Store.
 
-The Dubai-based company's founder told users that their funds were "safe" and that it would refund any of those affected.
+The European Commission said Apple had abused its dominant position by imposing restrictions on app developers.
 
-It said hackers stole from its Ethereum coin digital wallet. Ethereum is the second largest cryptocurrency by value after Bitcoin.
+The restrictions prevented them from telling iOS users about alternative music subscription services that cost less.
 
-Bybit's founder Ben Zhou said the money could be covered by the firm or by a loan from partners. Bybit holds $20bn (£15bn) in assets.
+Apple said it would appeal against the decision, which it called "flawed".
 
-Bybit said the hackers exploited security features, then transferred the money to an unidentified address.
+The fine follows a complaint from music streaming service Spotify in 2019.
 
-After the theft, the value of Ethereum fell by around 4% on Friday, leaving it worth $2,641.41 (£2,090) per coin.
+The Swedish company said Apple was unfairly restricting rivals to its own Apple Music streaming service.
 
-The scale of the theft would exceed a previous record, which was a $620m (£490m) heist of Ethereum and USD Coin from the Ronin Network in 2022.`,
+The European Commission said Apple's conduct, which lasted for almost a decade, may have led many iOS users to pay "significantly higher prices for music streaming subscriptions".
+
+Margrethe Vestager, the EU's competition chief, said: "For a decade, Apple abused its dominant position in the market for the distribution of music streaming apps through the App Store."
+
+She said the company's restrictions on developers meant "consumers had no idea there could be something cheaper available elsewhere".`,
     words: {
-      "cryptocurrency": {
-        meaning: "暗号通貨",
+      "fine": {
+        meaning: "罰金、罰金を科す",
         example: {
-          en: "Bitcoin was the first cryptocurrency to gain widespread adoption.",
-          ja: "ビットコインは広く普及した最初の暗号通貨でした。"
+          en: "The company was fined for breaking environmental regulations.",
+          ja: "その会社は環境規制違反で罰金を科されました。"
         }
       },
-      "theft": {
-        meaning: "窃盗、盗難",
+      "abuse": {
+        meaning: "乱用する、悪用する",
         example: {
-          en: "The police are investigating the theft of valuable paintings.",
-          ja: "警察は価値のある絵画の盗難を捜査しています。"
+          en: "The company was accused of abusing its market position.",
+          ja: "その会社は市場での地位を乱用したと非難されました。"
         }
       },
-      "refund": {
-        meaning: "返金する、払い戻す",
+      "restriction": {
+        meaning: "制限、規制",
         example: {
-          en: "The store offered to refund the full amount.",
-          ja: "店は全額返金を申し出ました。"
+          en: "The government imposed new restrictions on imports.",
+          ja: "政府は輸入に新しい制限を課しました。"
         }
       }
     }
