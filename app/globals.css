@@ -149,6 +149,7 @@ body {
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
   border: 1px solid #e5e7eb;
   font-size: 0.875rem;
+  max-width: 300px !important;
 }
 
 .tippy-box[data-theme~='custom'] .tippy-arrow {
@@ -168,6 +169,10 @@ body {
   border-top: 1px solid #e5e7eb;
   margin-top: 0.5rem;
   padding-top: 0.5rem;
+}
+
+.meaning-item {
+  padding: 2px 0;
 }
 
 /* ホバーワードのスタイル */
