@@ -172,14 +172,12 @@ body {
 
 /* ホバーワードのスタイル */
 .hover-word {
-  border-bottom: 1px dotted #94a3b8;
   cursor: help;
   transition: all 0.2s ease;
 }
 
 .hover-word:hover {
   background-color: #eff6ff;
-  border-bottom-color: #2563eb;
 }
 
 /* 言語選択ボタンのスタイル */

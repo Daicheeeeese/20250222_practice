@@ -7,7 +7,7 @@ import 'tippy.js/themes/light.css'
 
 type HoverWordProps = {
   word: string
-  data: {
+  data?: {
     example: {
       en: string
       ja: string
@@ -15,7 +15,7 @@ type HoverWordProps = {
   }
 }
 
-export function HoverWord({ word, data }: HoverWordProps) {
+export function HoverWord({ word }: HoverWordProps) {
   const [translation, setTranslation] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -51,12 +51,8 @@ export function HoverWord({ word, data }: HoverWordProps) {
     <Tippy
       content={
         <div className="p-3">
-          <div className="meaning-box mb-2">
+          <div className="meaning-box">
             {isLoading ? '翻訳中...' : translation || '翻訳エラー'}
-          </div>
-          <div className="example-box text-sm">
-            <p className="mb-1">{data.example.en}</p>
-            <p className="text-gray-600">{data.example.ja}</p>
           </div>
         </div>
       }

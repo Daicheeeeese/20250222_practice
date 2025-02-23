@@ -13,32 +13,30 @@ export default function ArticlePage({ params }: { params: Params }) {
     notFound()
   }
 
-  // 記事の本文から単語を検出して HoverWord コンポーネントでラップする
+  // 記事の本文からすべての単語を検出して HoverWord コンポーネントでラップする
   const renderContent = (content: string) => {
-    let result = content;
+    // 単語を分割（句読点や空白で区切る）
+    const words = content.split(/([.,!?]|\s+)/);
     
-    // 記事内の単語を HoverWord コンポーネントに置き換える
-    Object.entries(article.words).forEach(([word, data]) => {
-      const regex = new RegExp(`\\b${word}\\b`, 'gi');
-      result = result.replace(regex, `<hover-word>${word}</hover-word>`);
-    });
-
-    // HTML文字列を配列に分割
-    const parts = result.split(/(<hover-word>.*?<\/hover-word>)/);
-
-    // 配列を React 要素に変換
-    return parts.map((part, index) => {
-      if (part.startsWith('<hover-word>')) {
-        const word = part.replace(/<\/?hover-word>/g, '');
-        return (
-          <HoverWord
-            key={index}
-            word={word}
-            data={article.words[word.toLowerCase()]}
-          />
-        );
+    return words.map((word, index) => {
+      // 空白や句読点はそのまま表示
+      if (!word.trim() || /^[.,!?]$/.test(word)) {
+        return word;
       }
-      return <span key={index}>{part}</span>;
+      
+      // 実際の単語の場合は HoverWord コンポーネントでラップ
+      return (
+        <HoverWord
+          key={index}
+          word={word}
+          data={{
+            example: {
+              en: "",  // 例文は空でOK（翻訳のみ表示）
+              ja: ""
+            }
+          }}
+        />
+      );
     });
   };
 
