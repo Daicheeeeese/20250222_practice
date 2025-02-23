@@ -81,6 +81,10 @@ body {
   padding-bottom: 1rem;
 }
 
+.site-header a {
+  text-decoration: none;  /* 下線を削除 */
+}
+
 .site-header .site-title {
   font-size: 1.875rem;  /* text-3xl */
   font-weight: bold;
