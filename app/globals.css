@@ -20,6 +20,33 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* ヘッダーのスタイル */
+.site-header {
+  background-color: #2563eb;  /* blue-600 */
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.site-header .site-title {
+  font-size: 1.875rem;  /* text-3xl */
+  font-weight: bold;
+  color: white;
+  transition: color 0.2s ease;
+}
+
+.site-header .site-title:hover {
+  color: #dbeafe;  /* blue-100 */
+}
+
+.site-header .nav-link {
+  color: #dbeafe;  /* blue-100 */
+  font-size: 1.125rem;  /* text-lg */
+  transition: color 0.2s ease;
+}
+
+.site-header .nav-link:hover {
+  color: white;
+}
+
 /* Tippyのカスタムテーマ */
 .tippy-box[data-theme~='custom'] {
   background-color: #f8fafc;  /* slate-50 */
