@@ -30,22 +30,24 @@ export default function ArticlePage({ params }: { params: Params }) {
   };
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Link 
-        href="/" 
-        className="text-blue-600 hover:text-blue-800 mb-6 block"
-      >
-        ← 記事一覧に戻る
-      </Link>
-      <article className="prose lg:prose-xl">
-        <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
-        <div className="text-gray-600 mb-8">{article.date}</div>
-        <p className="whitespace-pre-wrap">
-          {renderContent(article.content, article.words)}
-        </p>
-      </article>
-      
-      <DiscussionRequest />
-    </div>
+    <main className="article-container">
+      <div className="container mx-auto px-4 py-8">
+        <Link 
+          href="/" 
+          className="text-blue-600 hover:text-blue-800 mb-6 block"
+        >
+          ← 記事一覧に戻る
+        </Link>
+        <article className="prose lg:prose-xl">
+          <h1 className="text-3xl font-bold mb-4">{article.title}</h1>
+          <div className="text-gray-600 mb-8">{article.date}</div>
+          <p className="whitespace-pre-wrap">
+            {renderContent(article.content, article.words)}
+          </p>
+        </article>
+        
+        <DiscussionRequest />
+      </div>
+    </main>
   )
 } 

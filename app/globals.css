@@ -6,6 +6,7 @@
   --background: #ffffff;
   --foreground: #171717;
   --page-width: min(1280px, 100% - 4rem);  /* ページの最大幅を設定 */
+  --article-width: min(900px, 100% - 8rem);  /* 記事ページ用の幅を追加 */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -36,6 +37,14 @@ body {
 /* コンテナのスタイル */
 .container {
   width: var(--page-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding: 2rem 0;
+}
+
+/* 記事ページ用のコンテナスタイル */
+.article-container {
+  width: var(--article-width);
   margin-left: auto;
   margin-right: auto;
   padding: 2rem 0;
