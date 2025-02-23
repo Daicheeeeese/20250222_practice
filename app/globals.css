@@ -62,22 +62,30 @@ body {
   border: 1px solid #e5e7eb;
   transition: all 0.2s ease-in-out;
   height: 100%;
-  text-decoration: none;  /* 下線を削除 */
+  text-decoration: none;
+  color: #171717;  /* テキストカラーを黒に */
 }
 
 .article-card:hover {
   background-color: #eff6ff;
   transform: translateY(-2px);
   box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
-  text-decoration: none;  /* ホバー時も下線なし */
+  text-decoration: none;
+  color: #171717;  /* ホバー時も黒を維持 */
 }
 
 .article-card h2 {
-  text-decoration: none;  /* タイトルの下線を削除 */
+  text-decoration: none;
+  color: #171717;  /* タイトルも黒に */
 }
 
 .article-card p {
-  text-decoration: none;  /* 本文の下線を削除 */
+  text-decoration: none;
+  color: #171717;  /* 本文も黒に */
+}
+
+.article-card .date {
+  color: #6b7280;  /* 日付のみグレーを維持 */
 }
 
 /* サイトヘッダーのスタイル */
