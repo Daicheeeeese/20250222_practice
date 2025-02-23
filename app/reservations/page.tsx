@@ -18,28 +18,28 @@ const mockReservations: Reservation[] = [
     id: '1',
     articleTitle: 'Climate change: How can we reduce our carbon footprint?',
     scheduledDate: '2024-03-01 14:00',
-    partnerName: 'Emily Thompson',
+    partnerName: 'Taro Yamada',
     status: 'pending'
   },
   {
     id: '2',
     articleTitle: 'The future of artificial intelligence in healthcare',
     scheduledDate: '2024-03-02 15:00',
-    partnerName: 'Michael Chen',
+    partnerName: 'Emma Kim',
     status: 'confirmed'
   },
   {
     id: '3',
     articleTitle: 'Space exploration: The next frontier',
     scheduledDate: '2024-02-28 13:00',
-    partnerName: 'Sarah Johnson',
+    partnerName: 'Sakura Suzuki',
     status: 'done'
   },
   {
     id: '4',
     articleTitle: 'The impact of social media on mental health',
     scheduledDate: '2024-02-29 16:00',
-    partnerName: 'David Wilson',
+    partnerName: 'Li Xuan',
     status: 'cancelled'
   }
 ];
