@@ -1,26 +1,15 @@
 export type Article = {
   id: number;
   title: string;
-  date: string;
-  content: string;
   category: string;
-  level: 'A0' | 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-  words: {
-    [key: string]: {
-      meaning: string;
-      example: {
-        en: string;
-        ja: string;
-      }
-    }
-  }
-}
+  level: string;
+  content: string;
+};
 
 export const articles: Article[] = [
   {
     id: 1,
     title: "Elon Musk sues OpenAI and Sam Altman over 'betrayal' of AI mission",
-    date: "2024-03-01",
     category: "Technology",
     level: "B2",
     content: `Elon Musk is suing artificial intelligence company OpenAI and its chief executive Sam Altman, alleging they abandoned the company's original mission to benefit humanity in favour of profits.
@@ -67,7 +56,6 @@ In the lawsuit, filed in San Francisco, Mr Musk alleges this shift meant OpenAI 
   {
     id: 2,
     title: "Apple fined £1.6bn for not telling users about cheaper music streaming options",
-    date: "2024-03-01",
     category: "Business",
     level: "B1",
     content: `Apple has been fined £1.6bn ($2bn) by EU regulators for preventing music streaming services from informing users about cheaper subscription options outside its App Store.

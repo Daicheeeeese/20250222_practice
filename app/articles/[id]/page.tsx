@@ -3,6 +3,7 @@ import { HoverWord } from '@/components/HoverWord'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { DiscussionRequest } from '@/components/DiscussionRequest'
+import { JoinDiscussionButton } from '@/components/JoinDiscussionButton'
 
 type Params = { id: string }
 
@@ -54,7 +55,19 @@ export default function ArticlePage({ params }: { params: Params }) {
             </span>
           </div>
           <div className="text-gray-600 mb-8">{article.date}</div>
+          
+          {/* ここにパートナー情報と参加ボタンを表示 */}
+          {/* タイトル、カテゴリー、日付の後、本文の前に表示されます */}
+          {article.status === 'confirmed' && (
+            <div className="bg-white rounded-lg shadow p-4 mb-8">
+              <h2 className="text-lg font-semibold mb-2">パートナー</h2>
+              <p className="text-gray-700 mb-4">{article.partner || 'Not assigned'}</p>
+              <JoinDiscussionButton />
+            </div>
+          )}
+
           <div className="prose max-w-none">
+            {/* 本文 */}
             {article.content.split('\n\n').map((paragraph, index) => (
               <p key={index} className="mb-4">
                 {renderContent(paragraph)}

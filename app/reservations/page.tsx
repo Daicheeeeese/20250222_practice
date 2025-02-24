@@ -17,28 +17,28 @@ const mockReservations: Reservation[] = [
   {
     id: '1',
     articleTitle: 'Climate change: How can we reduce our carbon footprint?',
-    scheduledDate: '2024-03-01 14:00',
+    scheduledDate: '2024-03-01 14:00~14:15',
     partnerName: 'Taro Yamada',
     status: 'pending'
   },
   {
     id: '2',
     articleTitle: 'The future of artificial intelligence in healthcare',
-    scheduledDate: '2024-03-02 15:00',
+    scheduledDate: '2024-03-02 15:00~15:15',
     partnerName: 'Emma Kim',
     status: 'confirmed'
   },
   {
     id: '3',
     articleTitle: 'Space exploration: The next frontier',
-    scheduledDate: '2024-02-28 13:00',
+    scheduledDate: '2024-02-28 13:00~13:15',
     partnerName: 'Sakura Suzuki',
     status: 'done'
   },
   {
     id: '4',
     articleTitle: 'The impact of social media on mental health',
-    scheduledDate: '2024-02-29 16:00',
+    scheduledDate: '2024-02-29 16:00~16:15',
     partnerName: 'Li Xuan',
     status: 'cancelled'
   }
@@ -166,7 +166,7 @@ export default function ReservationsPage() {
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
           <div className="bg-white rounded-lg p-6 max-w-2xl w-full mx-4 max-h-[80vh] overflow-y-auto">
             <div className="flex justify-between items-center mb-4">
-              <h3 className="text-xl font-bold">AIチューターからのアドバイス</h3>
+              <h3 className="text-xl font-bold">AI先生からのアドバイス</h3>
               <button
                 onClick={() => setShowAdvice(null)}
                 className="text-gray-500 hover:text-gray-700"
