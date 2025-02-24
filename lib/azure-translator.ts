@@ -4,7 +4,9 @@ const AZURE_TRANSLATOR_ENDPOINT = 'https://api.cognitive.microsofttranslator.com
 
 export async function getDictionaryMeanings(word: string) {
   try {
-    // 意味の取得
+    console.log('API Key:', !!AZURE_TRANSLATOR_KEY); // キーの存在確認
+    console.log('Region:', AZURE_TRANSLATOR_REGION); // リージョンの確認
+    
     const meaningResponse = await fetch(`${AZURE_TRANSLATOR_ENDPOINT}/dictionary/lookup?api-version=3.0&from=en&to=ja`, {
       method: 'POST',
       headers: {
@@ -16,11 +18,15 @@ export async function getDictionaryMeanings(word: string) {
     });
 
     if (!meaningResponse.ok) {
+      console.error('API Error:', {
+        status: meaningResponse.status,
+        statusText: meaningResponse.statusText
+      });
       throw new Error('Dictionary lookup failed');
     }
 
     const meaningData = await meaningResponse.json();
-    console.log('API Response:', meaningData); // APIレスポンスを確認
+    console.log('API Response:', meaningData); // レスポンスの確認
 
     const meaning = meaningData[0]?.translations[0]?.displayTarget || '';
     console.log('Extracted meaning:', meaning); // 抽出した意味を確認
