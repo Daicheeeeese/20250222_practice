@@ -34,23 +34,27 @@ export async function generateMeanings(word: string) {
 
 export async function generateExample(word: string) {
   try {
+    console.log('OpenAI API Key exists:', !!process.env.OPENAI_API_KEY);
+
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
           role: "system",
-          content: "You are a helpful assistant that generates simple example sentences for English words. Respond with only the example sentence, nothing else."
+          content: "You are a helpful assistant that generates example sentences. Provide a simple, natural example sentence using the given word."
         },
         {
           role: "user",
-          content: `Generate a simple example sentence using the word "${word}".`
+          content: `Create a simple example sentence using the word "${word}". The sentence should be easy to understand.`
         }
       ],
-      max_tokens: 50,
+      max_tokens: 100,
       temperature: 0.7,
     });
 
-    return response.choices[0].message.content?.trim();
+    console.log('OpenAI Response:', response.choices[0]?.message);
+
+    return response.choices[0]?.message?.content || '';
   } catch (error) {
     console.error('OpenAI API error:', error);
     return null;
