@@ -1,12 +1,16 @@
 import OpenAI from 'openai';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
-});
+const getOpenAIClient = () => {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    throw new Error('OPENAI_API_KEY is not set in environment variables');
+  }
+  return new OpenAI({ apiKey });
+};
 
 export async function generateMeanings(word: string) {
   try {
-    const response = await openai.chat.completions.create({
+    const response = await getOpenAIClient().chat.completions.create({
       model: "gpt-3.5-turbo",
       messages: [
         {
@@ -34,7 +38,8 @@ export async function generateMeanings(word: string) {
 
 export async function generateExample(word: string) {
   try {
-    console.log('OpenAI API Key exists:', !!process.env.OPENAI_API_KEY);
+    const openai = getOpenAIClient();
+    console.log('OpenAI client initialized successfully');
 
     const response = await openai.chat.completions.create({
       model: "gpt-3.5-turbo",
@@ -52,11 +57,16 @@ export async function generateExample(word: string) {
       temperature: 0.7,
     });
 
-    console.log('OpenAI Response:', response.choices[0]?.message);
-
+    console.log('OpenAI Response received:', !!response);
     return response.choices[0]?.message?.content || '';
-  } catch (error) {
-    console.error('OpenAI API error:', error);
-    return null;
+
+  } catch (error: any) {
+    console.error('OpenAI API error details:', {
+      message: error.message,
+      type: error.type,
+      stack: error.stack,
+      response: error.response
+    });
+    throw error;
   }
 } 

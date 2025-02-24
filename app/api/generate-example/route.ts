@@ -5,32 +5,50 @@ import { translateText } from '@/lib/azure-translator';
 export async function POST(request: Request) {
   try {
     const { word } = await request.json();
-    console.log('Generating example for word:', word);
+    console.log('Processing word:', word);
 
-    // OpenAIで例文を生成
-    const example = await generateExample(word);
+    let example;
+    try {
+      example = await generateExample(word);
+      console.log('Example generated:', example);
+    } catch (error) {
+      console.error('Example generation error:', error);
+      return NextResponse.json({ 
+        error: 'Example generation failed',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      }, { status: 500 });
+    }
+
     if (!example) {
-      console.error('Failed to generate example');
-      return NextResponse.json({ error: 'Example generation failed' }, { status: 500 });
+      return NextResponse.json({ error: 'No example generated' }, { status: 500 });
     }
 
-    console.log('Generated example:', example);
+    let translation;
+    try {
+      translation = await translateText(example);
+      console.log('Translation completed:', translation);
+    } catch (error) {
+      console.error('Translation error:', error);
+      return NextResponse.json({ 
+        error: 'Translation failed',
+        details: error instanceof Error ? error.message : 'Unknown error'
+      }, { status: 500 });
+    }
 
-    // Azureで例文を翻訳
-    const translation = await translateText(example);
     if (!translation) {
-      console.error('Failed to translate example');
-      return NextResponse.json({ error: 'Translation failed' }, { status: 500 });
+      return NextResponse.json({ error: 'No translation generated' }, { status: 500 });
     }
 
-    console.log('Translated example:', translation);
-
-    return NextResponse.json({ 
+    return NextResponse.json({
       example,
-      translation 
+      translation
     });
+
   } catch (error) {
-    console.error('API error:', error);
-    return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    console.error('API route error:', error);
+    return NextResponse.json({ 
+      error: 'Internal server error',
+      details: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 });
   }
 } 
